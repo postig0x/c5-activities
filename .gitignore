@@ -1,0 +1,5 @@
+# ignore .git in subdirectories
+*/.git
+*/.gitignore
+*/.gitattributes
+*/.gitmodules
