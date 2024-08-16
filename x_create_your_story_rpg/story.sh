@@ -74,7 +74,8 @@ until [[ $end == -1 ]]
 do
   if [[ $end == 7 ]]
   then
-    context="ending number: ${zs[1]}"
+    dim=$(shuf -i 0-2 -n 1)
+    context="ending number: ${zs[$dim]}"
     let end=-1
     continue
   fi
