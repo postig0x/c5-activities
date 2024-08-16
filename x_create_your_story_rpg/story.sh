@@ -101,40 +101,5 @@ do
   esac
 done
 
-
-# loop through the number of paths available
-#for i in "${!paths[@]}"
-#do
-#  echo -e "${paths[$i]}"
-#  read -n 1 choice
-#  case "$choice" in
-#    "a")
-#      echo -e "${as[$i]}"
-#      ;;
-#    "b")
-#      echo -e "${bs[$i]}"
-#      ;;
-#    # input that is anything but " a " or " b "
-#    [!"a"] | [!"b"])
-#      echo -e "\n\n$choice"
-#      echo -e "\n\nwierdo"
-#      ;;
-#    # input at the end of the game (default case is used for this case)
-#    *)
-#      echo "please try again."
-#      echo "reset while loop here."
-#      exit 1
-#      ;;
-#  esac
-  #if [[ " ${choices[$i]} " =~ " ${choice} " ]]
-  #then
-  #  context="${outcomes[$i]}"
-  #  echo -e "$context"
-  #else
-  #  context="\nYou have made a fatal mistake and are caught by the Internal Internet Department. GAME OVER."
-  #  break
-  #fi
-#done
-
 echo -e "$context"
 
