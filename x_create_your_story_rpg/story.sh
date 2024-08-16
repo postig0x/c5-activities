@@ -35,30 +35,31 @@ choices=(
 
 # list of responses if (a)
 as=(
-  "\n\nYou uncover more information about the government's weaknesses and plan a successful rebellion. Congratulations, you have saved the world!"
-  "\n\nYou are hailed as a hero by the resistance movement and become a leader in the fight against the oppressive regime. Good Luck!"
-  "\n\nYou find the secret underground base abandoned, but you discover valuable resources that help you in your fight against the government. Keep going!"
-  "\n\nYou are sentenced to life in prison, but your actions inspire others to join the resistance. The fight continues without you, but you have made a difference."
-  "\n\nYou become a valuable member of the resistance movement and help plan many successful rebellions. The government is weakened and eventually overthrown. Well done!"
-  "\n\nYou manage to escape, but the rebellion fails. You go into hiding and plan your next move. The fight is not over yet."
-  "\n\nYou retire and live a peaceful life, but you can't help but feel guilty for not continuing the fight. The world is still in the hands of the oppressive regime, but you have earned your rest."
+    "\n\nYou dig deeper into the secret plan, uncovering a vast conspiracy that goes all the way to the top. The information you find is both exhilarating and terrifying."
+    "\n\nYou make contact with the resistance and are welcomed into their ranks. You're given a codename and begin training for your first mission."
+    "\n\nYou journey to the coordinates and discover a hidden entrance. Inside, you find a bustling underground city filled with rebels and advanced technology."
+    "\n\nYou engage in a fierce battle with the IID agents. Your combat training pays off, and you manage to subdue them and escape."
+    "\n\nYou gather the resistance leaders and start planning a daring assault on the government's main control center. The stakes are high, but the potential payoff is even higher."
+    "\n\nYou stand your ground and fight alongside your fellow rebels. The battle is intense, but your determination gives you strength."
+    "\n\nYou choose to continue the fight, knowing that true freedom is worth any sacrifice. Your experiences have made you a valuable asset to the resistance."
 )
 
 # list of responses if (b)
 bs=(
-  "\n\nB You uncover more information about the government's weaknesses and plan a successful rebellion. Congratulations, you have saved the world!"
-  "\n\nB You are hailed as a hero by the resistance movement and become a leader in the fight against the oppressive regime. Good Luck!"
-  "\n\nB You find the secret underground base abandoned, but you discover valuable resources that help you in your fight against the government. Keep going!"
-  "\n\nB You are sentenced to life in prison, but your actions inspire others to join the resistance. The fight continues without you, but you have made a difference."
-  "\n\nB You become a valuable member of the resistance movement and help plan many successful rebellions. The government is weakened and eventually overthrown. Well done!"
-  "\n\nB You manage to escape, but the rebellion fails. You go into hiding and plan your next move. The fight is not over yet."
-  "\n\nB You retire and live a peaceful life, but you can't help but feel guilty for not continuing the fight. The world is still in the hands of the oppressive regime, but you have earned your rest."
+    "\n\nYou report the message to the authorities. They thank you for your loyalty and ask you to keep an eye out for more suspicious activity."
+    "\n\nYou delete the message and try to forget about it. However, you can't shake the feeling that you've missed an important opportunity."
+    "\n\nYou delete the message, deciding it's safer not to get involved. You go about your daily life, but the thought of what might have been lingers."
+    "\n\nYou surrender to the IID. They take you in for questioning, and you spend the next few hours in a stark interrogation room."
+    "\n\nYou decide to lay low and gather resources. Over the next few weeks, you stockpile supplies and make valuable connections within the underground network."
+    "\n\nYou choose to escape, using your knowledge of the city's layout to evade capture. You disappear into the shadows, leaving the battle behind."
+    "\n\nYou decide to retire from the resistance and seek a peaceful life. You find a quiet corner of the world and try to put your past behind you, always looking over your shoulder."
 )
 
+# final outcome responses
 zs=(
-  "1"
-  "2"
-  "3"
+    "\n\nYour tireless efforts and sacrifices have paid off. The resistance movement, under your leadership, successfully overthrows the oppressive government. A new era of freedom and equality dawns for all citizens. You're hailed as a hero and play a key role in shaping the new, just society."
+    "\n\nThe conflict between the resistance and the government reaches a stalemate. While you've managed to carve out some autonomy for a portion of the population, the larger power structure remains intact. Life continues with a mix of newfound freedoms and lingering oppression, leaving you with a sense of incomplete victory."
+    "\n\nDespite your best efforts, the government crushes the resistance movement. You're captured and sentenced to life in a high-security prison. As you languish in your cell, you wonder if your actions made any difference at all, or if you've only made things worse for those you tried to help."
 )
 
 # init end signal
@@ -75,7 +76,7 @@ do
   if [[ $end == 7 ]]
   then
     dim=$(shuf -i 0-2 -n 1)
-    context="ending number: ${zs[$dim]}"
+    context="${zs[$dim]}"
     let end=-1
     continue
   fi
@@ -103,4 +104,5 @@ do
 done
 
 echo -e "$context"
+echo -e "\n\nGoodbye $NAME"
 
