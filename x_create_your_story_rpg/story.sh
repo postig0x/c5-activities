@@ -17,7 +17,7 @@ paths=(
   "\n\nThe message contains information about a hidden resistance movement. Do you want to:\n(a) join them OR (b) ignore it? "
   "\n\nThe message gives you coordinates to a secret underground base. Do you want to:\n(a) investigate OR (b) delete the message? "
   "\n\nYou are caught by the IID (Internal Internet Department) while investigating. Do you want to:\n(a) fight OR (b) surrender? "
-  "\n\nYou successfully destroyed your ops and and joined the resistance movement. Do you want to:\n(a) plan a rebellion OR (b) lay low and gather resources? "
+  "\n\nYou successfully destroyed your opps and and joined the resistance movement. Do you want to:\n(a) plan a rebellion OR (b) lay low and gather resources? "
   "\n\nYou are cornered by the IID during a rebellion. Do you want to:\n(a) fight OR (b) escape? "
   "\n\nYou successfully escape the IID and live to fight another day. Do you want to:\n(a) continue fighting OR (b) retire and live a peaceful life? "
 )
@@ -83,13 +83,14 @@ do
     # instead of randomizing, lets use the answers from the user
     # calculate a number with the As and Bs
     # the result will decide the user's fate:
-    if [[ a_count > b_count ]] # win outcome
+    if [[ a_count -gt b_count ]]
     then
-      context="${zs[0]}"
-    elif [[ b_count < a_count ]] # lose outcome
-      context="${zs[1]}"
-    else # middle outcome
-      context="${zs[2]}"
+      context="${zs[0]}" # win outcome
+    elif [[ b_count -lt a_count ]]
+    then
+      context="${zs[1]}" # lose outcome
+    else
+      context="${zs[2]}" # middle outcome
     fi
     let end=-1
     continue
