@@ -13,13 +13,13 @@ context="In a dystopian future, you are a hacker fighting against an oppressive 
 
 # list of possible paths
 paths=(
-  "\nThe message reveals a secret plan to overthrow the government. Do you want to:\n(a) investigate further OR (b) report it to the authorities? "
-  "\nThe message contains information about a hidden resistance movement. Do you want to:\n(a) join them OR (b) ignore it? "
-  "\nThe message gives you coordinates to a secret underground base. Do you want to:\n(a) investigate OR (b) delete the message? "
-  "\nYou are caught by the IID (Internal Internet Department) while investigating. Do you want to:\n(a) fight OR (b) surrender? "
-  "\nYou successfully destroyed your ops and and joined the resistance movement. Do you want to:\n(a) plan a rebellion OR (b) lay low and gather resources? "
-  "\nYou are cornered by the IID during a rebellion. Do you want to:\n(a) fight OR (b) escape? "
-  "\nYou successfully escape the IID and live to fight another day. Do you want to:\n(a) continue fighting OR (b) retire and live a peaceful life? "
+  "\n\nThe message reveals a secret plan to overthrow the government. Do you want to:\n(a) investigate further OR (b) report it to the authorities? "
+  "\n\nThe message contains information about a hidden resistance movement. Do you want to:\n(a) join them OR (b) ignore it? "
+  "\n\nThe message gives you coordinates to a secret underground base. Do you want to:\n(a) investigate OR (b) delete the message? "
+  "\n\nYou are caught by the IID (Internal Internet Department) while investigating. Do you want to:\n(a) fight OR (b) surrender? "
+  "\n\nYou successfully destroyed your ops and and joined the resistance movement. Do you want to:\n(a) plan a rebellion OR (b) lay low and gather resources? "
+  "\n\nYou are cornered by the IID during a rebellion. Do you want to:\n(a) fight OR (b) escape? "
+  "\n\nYou successfully escape the IID and live to fight another day. Do you want to:\n(a) continue fighting OR (b) retire and live a peaceful life? "
 )
 
 # list of choices
@@ -47,7 +47,7 @@ as=(
 # list of responses if (b)
 bs=(
     "\n\nYou report the message to the authorities. They thank you for your loyalty and ask you to keep an eye out for more suspicious activity."
-    "\n\nYou delete the message and try to forget about it. However, you can't shake the feeling that you've missed an important opportunity."
+    "\n\nYou ignore the message and try to forget about it. However, you can't shake the feeling that you've missed an important opportunity."
     "\n\nYou delete the message, deciding it's safer not to get involved. You go about your daily life, but the thought of what might have been lingers."
     "\n\nYou surrender to the IID. They take you in for questioning, and you spend the next few hours in a stark interrogation room."
     "\n\nYou decide to lay low and gather resources. Over the next few weeks, you stockpile supplies and make valuable connections within the underground network."
@@ -68,13 +68,14 @@ length=${#paths[@]}
 
 # show intro
 echo -e "$context"
+sleep 2
 
 # until loop
-# (( ... )) makes arithmetic comparisons
 until [[ $end == -1 ]]
 do
   if [[ $end == 7 ]]
   then
+    # randomize the end
     dim=$(shuf -i 0-2 -n 1)
     context="${zs[$dim]}"
     let end=-1
@@ -87,13 +88,15 @@ do
     "a")
       echo -e "${as[$end]}"
       let end+=1
+      sleep 3
       ;;
     "b")
       echo -e "${bs[$end]}"
       let end+=1
+      sleep 3
       ;;
     "q")
-      echo -e "\n\nGoodbye $NAME"
+      echo -e "\n\nGoodbye, $NAME"
       exit 0
       ;;
     *)
@@ -103,6 +106,8 @@ do
   esac
 done
 
+sleep 2
 echo -e "$context"
-echo -e "\n\nGoodbye $NAME"
+sleep 2
+echo -e "\n\nGoodbye, $NAME"
 
