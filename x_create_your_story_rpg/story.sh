@@ -64,7 +64,9 @@ zs=(
 
 # init end signal
 end=0
-length=${#paths[@]}
+# init A and B counter
+a_count=0
+b_count=0
 
 # show intro
 echo -e "$context"
@@ -76,8 +78,19 @@ do
   if [[ $end == 7 ]]
   then
     # randomize the end
-    dim=$(shuf -i 0-2 -n 1)
-    context="${zs[$dim]}"
+    #dim=$(shuf -i 0-2 -n 1)
+    #context="${zs[$dim]}"
+    # instead of randomizing, lets use the answers from the user
+    # calculate a number with the As and Bs
+    # the result will decide the user's fate:
+    if [[ a_count > b_count ]] # win outcome
+    then
+      context="${zs[0]}"
+    elif [[ b_count < a_count ]] # lose outcome
+      context="${zs[1]}"
+    else # middle outcome
+      context="${zs[2]}"
+    fi
     let end=-1
     continue
   fi
@@ -86,11 +99,13 @@ do
   read -n 1 choice
   case "$choice" in
     "a")
+      a_count+=1
       echo -e "${as[$end]}"
       let end+=1
       sleep 3
       ;;
     "b")
+      b_count+=1
       echo -e "${bs[$end]}"
       let end+=1
       sleep 3
