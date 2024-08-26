@@ -25,6 +25,10 @@ for i, itemObj in enumerate(food_menu.values()):
 # grab cheapest item price from menu
 price_limit = min(price_list.values())
 
+if price_limit > budget:
+    print("You can't afford this place!")
+    quit()
+
 # 3. Print the restaurant menu
 def show_menu():
     global order
@@ -48,6 +52,10 @@ while budget > price_limit:
     try:
         budget -= price_list[order]
         items_ordered += 1
+        if budget < 0:
+            print(f"Error: you don't have enough money in your budget for {order}")
+            budget += price_list[order]
+            items_ordered -= 1
         # 5. Tell the user how much money they have left after each order
         print(f"You have ${budget:.2f} left after your order.")
         print()
@@ -60,8 +68,11 @@ if order != 'leave':
     terms = input("Do you agree to pay the bill? (yes/no) ")
     if terms.lower() == 'yes':
         print(f"You paid ${start_budget - budget:.2f} for your date.")
+        print(f"Your change is ${budget:.2f}")
+        print()
     else:
         print("You did not agree to pay the bill.")
+        print()
 
 # 7. Challenge: based on all user inputs, script should decide if they will get a 2nd date
 if (items_ordered > 4):
