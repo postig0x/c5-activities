@@ -21,15 +21,15 @@ if not os.path.exists(dir_path):
     sys.exit(1)
 
 # check if path is a directory
-if not os.path.is_dir(dir_path):
+if not os.path.isdir(dir_path):
     print(f"{dir_path} is not a directory")
     sys.exit(1)
 
-for item in os.path.listdir(dir_path):
+for item in os.listdir(dir_path):
     item_path = os.path.join(dir_path, item)
-    if os.path.is_file(item_path):
+    if os.path.isfile(item_path):
         files += 1
-    elif os.path.is_dir(item_path):
+    elif os.path.isdir(item_path):
         dirs += 1
 
 
