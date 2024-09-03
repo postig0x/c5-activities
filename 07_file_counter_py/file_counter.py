@@ -25,14 +25,17 @@ if not os.path.isdir(dir_path):
     print(f"{dir_path} is not a directory")
     sys.exit(1)
 
+# loop through directory to count each entry
 for item in os.listdir(dir_path):
+    # make path for item in directory
     item_path = os.path.join(dir_path, item)
+    # add file counter if file, otherwise add dir counter if directory
     if os.path.isfile(item_path):
         files += 1
     elif os.path.isdir(item_path):
         dirs += 1
 
-
+# print results
 print(f"Directory {dir_path} contains:")
 print(f"{files} files")
 print(f"{dirs} directories")
